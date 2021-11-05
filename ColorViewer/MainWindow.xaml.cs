@@ -24,7 +24,6 @@ namespace ColorViewer
             viewModel = new ViewModel();
             InitializeComponent();
             this.DataContext = viewModel;
-
         }
     }
 }
