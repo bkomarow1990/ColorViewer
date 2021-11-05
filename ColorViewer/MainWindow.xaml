@@ -5,13 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorViewer" xmlns:viewmodels="clr-namespace:ColorViewer.ViewModels"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
         d:DataContext="{d:DesignInstance Type=viewmodels:ViewModel}"
+        
         mc:Ignorable="d"
         Title="ColorViewer" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid >
@@ -60,7 +68,16 @@
 
             <Button Grid.Column="0" Command="{Binding AddColorCommand}" Width="150" Margin="5,0,0,0">Add</Button>
             <Button Grid.Column="1" Command="{Binding RemoveColorCommand}" Width="150" Margin="5,0,0,0">Delete</Button>
-
+            <Label Margin="10,0,10,0" VerticalAlignment="Center">Themes: </Label>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label VerticalAlignment="Center" >Light</Label>
+                <ToggleButton Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" 
+                          ToolTip="MaterialDesignSwitchDarkToggleButton" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"
+                          
+                          />
+                <Label VerticalAlignment="Center" >Dark</Label>
+            </StackPanel>
+            
         </DockPanel>
         <ListBox Grid.Row="2" Name="ColorsListBox" ItemsSource="{Binding ColorNumarable}" Foreground="Black" SelectedItem="{Binding Path=MyColor_, Mode=TwoWay}" Margin="2,10,2,2">
             <ListBox.ItemTemplate>

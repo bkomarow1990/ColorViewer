@@ -1,4 +1,5 @@
 ﻿using ColorViewer.ViewModels;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,24 @@ namespace ColorViewer
             viewModel = new ViewModel();
             InitializeComponent();
             this.DataContext = viewModel;
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ToggleBaseColour(true);
+        }
+        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
+        private void ToggleBaseColour(bool isDark)
+        {
+            ITheme theme = _paletteHelper.GetTheme();
+            IBaseTheme baseTheme = isDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+            theme.SetBaseTheme(baseTheme);
+            _paletteHelper.SetTheme(theme);
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ToggleBaseColour(false);
         }
     }
 }
