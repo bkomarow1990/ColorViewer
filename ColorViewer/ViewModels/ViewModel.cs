@@ -18,14 +18,12 @@ namespace ColorViewer.ViewModels
         bool redChecked = true;
         bool greenChecked = true;
         bool blueChecked = true;
-        int darkChecked = 1;
-        int lightChecked = 2;
+
         public bool AlphaChecked { get => alphaChecked; set { alphaChecked = value; OnPropertyChanged(); } }
         public bool RedChecked { get => redChecked; set { redChecked = value; OnPropertyChanged(); } }
         public bool GreenChecked { get => greenChecked; set { greenChecked = value; OnPropertyChanged(); } }
         public bool BlueChecked { get => blueChecked; set { blueChecked = value; OnPropertyChanged(); } }
-        public int DarkChecked { get => darkChecked; set { darkChecked = value; OnPropertyChanged(); SetLightDark(true); } }
-        public int LightChecked { get => lightChecked; set { lightChecked = value; OnPropertyChanged(); SetLightDark(false); } }
+      
         private ObservableCollection<MyColor> colorsCollection { get; set; }
         private Command addColorCommand;
         private Command removeColorCommand;
@@ -47,11 +45,6 @@ namespace ColorViewer.ViewModels
             removeColorCommand = new DelegateCommand(RemoveColor, () => MyColor_ != null && colorsCollection.Count != 1);
             myColor = new MyColor();
         }
-        private void RemoveAllColors()
-        {
-            colorsCollection.Clear();
-        }
-
         private void AddColor()
         {
             if (MyColor_ != null)
@@ -75,20 +68,6 @@ namespace ColorViewer.ViewModels
         {
             get { return myColor; }
             set { if (value == null) { return; } myColor = value; OnPropertyChanged(); }
-        }
-        public void SetLightDark(bool isDark)
-        {
-            var resources = Application.Current.Resources.MergedDictionaries;
-
-            var existingResourceDictionary = Application.Current.Resources.MergedDictionaries
-                                            .Where(rd => rd.Source != null)
-                                            .SingleOrDefault(rd => Regex.Match(rd.Source.OriginalString, @"(\/MaterialDesignExtensions;component\/Themes\/MaterialDesign((Light)|(Dark))Theme)").Success);
-
-            var source = $"pack://application:,,,/MaterialDesignExtensions;component/Themes/MaterialDesign{(isDark ? "Dark" : "Light")}Theme.xaml";
-            var newResourceDictionary = new ResourceDictionary() { Source = new Uri(source) };
-
-            Application.Current.Resources.MergedDictionaries.Remove(existingResourceDictionary);
-            Application.Current.Resources.MergedDictionaries.Add(newResourceDictionary);
         }
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
