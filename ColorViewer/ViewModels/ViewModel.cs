@@ -54,10 +54,14 @@ namespace ColorViewer.ViewModels
             removeAllCommand = new DelegateCommand(RemoveAllColors, () => colorsCollection.Count != 0);
             myColor = new MyColor();
         }
-
+        public void CommandsExcecuteChanged() { 
+            removeAllCommand.RaiseCanExecuteChanged();
+            addColorCommand.RaiseCanExecuteChanged();
+        }
         private void RemoveAllColors()
         {
             colorsCollection.Clear();
+            CommandsExcecuteChanged();
         }
 
         private void AddColor()
@@ -65,7 +69,7 @@ namespace ColorViewer.ViewModels
             if (MyColor_ != null)
             {
                 colorsCollection.Add((MyColor)MyColor_.Clone());
-                removeAllCommand.RaiseCanExecuteChanged();
+                CommandsExcecuteChanged();
             }
         }
         private void RemoveColor()
@@ -74,6 +78,7 @@ namespace ColorViewer.ViewModels
             {
                 colorsCollection.Remove(SelectedColor);
                 removeAllCommand.RaiseCanExecuteChanged();
+                addColorCommand.RaiseCanExecuteChanged();
             }
         }
         private MyColor myColor;//= new MyColor();
@@ -85,7 +90,7 @@ namespace ColorViewer.ViewModels
         public MyColor MyColor_
         {
             get { return myColor; }
-            set { if (value == null) { return; } myColor = value; OnPropertyChanged(); }
+            set { if (value == null) { return; } myColor = value; addColorCommand.RaiseCanExecuteChanged(); OnPropertyChanged();  }
         }
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {

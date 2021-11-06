@@ -8,6 +8,7 @@ namespace ColorViewer.ViewModels
 {
     public class MyColor : INotifyPropertyChanged, ICloneable
     {
+        
         Color myColor;
         public byte Alpha
         {

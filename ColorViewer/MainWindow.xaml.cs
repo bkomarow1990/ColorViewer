@@ -44,5 +44,25 @@ namespace ColorViewer
         {
             ToggleBaseColour(false);
         }
+
+        private void Slider_ValueChanged_Alpha(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            viewModel.CommandsExcecuteChanged();
+        }
+
+        private void Slider_ValueChanged_Red(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            viewModel.CommandsExcecuteChanged();
+        }
+
+        private void Slider_ValueChanged_Green(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            viewModel.CommandsExcecuteChanged();
+        }
+
+        private void Slider_ValueChanged_Blue(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            viewModel.CommandsExcecuteChanged();
+        }
     }
 }
