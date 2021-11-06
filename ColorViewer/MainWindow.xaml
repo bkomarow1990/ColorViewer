@@ -49,10 +49,10 @@
             <Label Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">Blue:</Label>
             <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding MyColor_.Blue, Mode=OneWay}" VerticalAlignment="Center"/>
 
-            <Slider Grid.Row="0" Grid.Column="3" Margin="10,5,10,0" Maximum="255" Minimum="1" Value="{Binding MyColor_.Alpha, Mode=TwoWay}" IsEnabled="{Binding AlphaChecked}"></Slider>
-            <Slider Grid.Row="1" Grid.Column="3" Margin="10,5,10,0" Value="{Binding MyColor_.Red, Mode=TwoWay}" Minimum="1" Maximum="255" SmallChange="1" IsEnabled="{Binding RedChecked}"></Slider>
-            <Slider Grid.Row="2" Grid.Column="3" Margin="10,5,10,0" Value="{Binding MyColor_.Green, Mode=TwoWay}" Minimum="1" Maximum="255" SmallChange="1" IsEnabled="{Binding GreenChecked}"></Slider>
-            <Slider Grid.Row="3" Grid.Column="3" Margin="10,5,10,0" Value="{Binding MyColor_.Blue, Mode=TwoWay}" Maximum="255" Minimum="1" SmallChange="1" IsEnabled="{Binding BlueChecked}"></Slider>
+            <Slider Grid.Row="0" Grid.Column="3" Margin="10,5,10,0" Maximum="255" Minimum="1" Value="{Binding MyColor_.Alpha, Mode=TwoWay}" IsEnabled="{Binding AlphaChecked}" ValueChanged="Slider_ValueChanged_Alpha"></Slider>
+            <Slider Grid.Row="1" Grid.Column="3" Margin="10,5,10,0" Value="{Binding MyColor_.Red, Mode=TwoWay}" Minimum="1" Maximum="255" SmallChange="1" IsEnabled="{Binding RedChecked}" ValueChanged="Slider_ValueChanged_Red"></Slider>
+            <Slider Grid.Row="2" Grid.Column="3" Margin="10,5,10,0" Value="{Binding MyColor_.Green, Mode=TwoWay}" Minimum="1" Maximum="255" SmallChange="1" IsEnabled="{Binding GreenChecked}" ValueChanged="Slider_ValueChanged_Green"></Slider>
+            <Slider Grid.Row="3" Grid.Column="3" Margin="10,5,10,0" Value="{Binding MyColor_.Blue, Mode=TwoWay}" Maximum="255" Minimum="1" SmallChange="1" IsEnabled="{Binding BlueChecked}" ValueChanged="Slider_ValueChanged_Blue"></Slider>
 
             <Border Grid.Column="4" Grid.Row="0" Grid.RowSpan="4" Margin="5">
                 <Border.Background>

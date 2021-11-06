@@ -19,4 +19,3 @@ C:\Users\Admin\source\repos\ColorViewer\ColorViewer\bin\Debug\MaterialDesignColo
 C:\Users\Admin\source\repos\ColorViewer\ColorViewer\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Admin\source\repos\ColorViewer\ColorViewer\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Admin\source\repos\ColorViewer\ColorViewer\obj\Debug\App.baml
-C:\Users\Admin\source\repos\ColorViewer\ColorViewer\obj\Debug\ColorViewer.csproj.CopyComplete
